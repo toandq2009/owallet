@@ -195,8 +195,8 @@ jobs:
           echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_B64 }}" | base64 -d > $GITHUB_WORKSPACE/owallet-829a1-3cfff653dc5e.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$GITHUB_WORKSPACE/owallet-829a1-3cfff653dc5e.json" >> $GITHUB_ENV
       - name: Setup Fastlane ios
-        working-directory: apps/mobile/ios
-        run: bundle update
+        working-directory: apps/mobile/ios/fastlane
+        run: cd .. && bundle update
         env:
           DISCORD_HOOK_ID: ${{ secrets.DISCORD_MOBILE_WEBHOOK_ID }}
           DISCORD_HOOK_TOKEN: ${{ secrets.DISCORD_MOBILE_WEBHOOK_TOKEN }}
