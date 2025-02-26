@@ -196,7 +196,8 @@ jobs:
           echo "GOOGLE_APPLICATION_CREDENTIALS=$GITHUB_WORKSPACE/owallet-829a1-3cfff653dc5e.json" >> $GITHUB_ENV
       - name: Setup Fastlane ios
         working-directory: apps/mobile/ios/fastlane
-        run: cd .. && bundle update
+        run: cd .. && bundle update && fastlane deploy_firebase
+        timeout-minutes: 30 # Set the timeout to 120 minutes
         env:
           DISCORD_HOOK_ID: ${{ secrets.DISCORD_MOBILE_WEBHOOK_ID }}
           DISCORD_HOOK_TOKEN: ${{ secrets.DISCORD_MOBILE_WEBHOOK_TOKEN }}
